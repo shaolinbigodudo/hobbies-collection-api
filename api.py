@@ -14,7 +14,7 @@ def get_livros():
 
 @app.route('/api/livros/<int:id>', methods=['GET'])
 def get_livro(id):
-    livro = next((livro for livros in livros if livro[id] == id), None)
+    livro = next((livro for livro in livros if livro['id'] == id), None)
     return jsonify(livro) if livro  else ('', 404)
 
 
