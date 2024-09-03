@@ -47,8 +47,11 @@ def add_livro():
     novo_livro = Livro(titulo = dados['titulo'], autor=dados['autor'])
     db.session.add(novo_livro)
     db.session.commit()
-    livros.append(novo_livro)
-    return jsonify
+    return jsonify({
+        "id": novo_livro.id,
+        "titulo": novo_livro.titulo,
+        "autor": novo_livro.autor,
+    }), 201
 
 
 if __name__ == '__main__':
